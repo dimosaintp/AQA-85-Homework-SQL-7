@@ -19,7 +19,7 @@ public class BankLoginTest {
 
     @AfterAll
     static void tearDownAll() {
-        cleanDatabase();
+//        cleanDatabase();
     }
 
     @BeforeEach
