@@ -18,16 +18,9 @@ jobs:
         run: chmod +x gradlew
       - name: Container start
         uses: hoverkraft-tech/compose-action@v2.0.1
-      - name: Waiting for сontainer start
-        run: sleep 30
+      - name: Waiting for container start
+        run: sleep 30 # Ждем 30 секунд, чтобы контейнер успел запуститься
       - name: Start SUT
-        # Запускаем SUT,
-        # имя файла SUT будет отличаться в каждой задаче.
-        # & означает, что в фоновом режиме не блокируем терминал для запуска тестов,
-        # обязательно должен быть для запуска SUT в CI
-        run: java -jar ./artifacts/app-mbank.jar &
+        run: java -jar ./artifacts/app-deadline.jar &
       - name: Build with Gradle
-        # Запускаем автотесты
-        # Для проектов на базе Selenide необходимо добавить параметр для запуска браузера
-        # в headless режиме -Dselenide.headless=true, параметр --info должен остаться
         run: ./gradlew test --info
