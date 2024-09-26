@@ -19,11 +19,13 @@ public class BankLoginTest {
 
     @AfterAll
     static void tearDownAll() {
-//        cleanDatabase();
+        cleanDatabase();
     }
 
     @BeforeEach
     void setUp() {
+        System.setProperty("selenide.headless", "true"); // Включаем headless режим
+        System.setProperty("selenide.browser", "chrome"); // Указываем браузер
         loginPage = open("http://Localhost:9999", LoginPage.class);
     }
 
